@@ -10,6 +10,17 @@
 // Por ejemplo, si tenemos el texto:
 const carta = 'bici coche balón _playstation bici coche peluche'
 
+function listGifts(letter) {
+    // ¡Tú puedes!
+    let regalos_separados = letter.trim().split(/\s+/)
+    let regalos_filtrados = regalos_separados.filter( x => !x.includes('_') )
+    let regalos_contador = {}
+    regalos_filtrados.map(function(x) {
+      regalos_contador[x] = (regalos_contador[x] || 0) + 1;
+    })
+    return regalos_contador
+}
+
 // Al ejecutar el método debería devolver lo siguiente:
 const regalos = listGifts(carta)
 
@@ -22,8 +33,3 @@ console.log(regalos)
   peluche: 1
 }
 */
-
-function listGifts(letter) {
-    // ¡Tú puedes!
-    return {}
-}
