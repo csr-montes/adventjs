@@ -35,27 +35,41 @@ function createXmasTree(height) {
   if (!/^[1-9][0-9]?$|^100$/.test(height)) {
     return "";
   }
+  let response = "";
 
-  let tree = "";
-
-  let branches = "";
   for (let i = 0; i < height; i++) {
-    numberSpaces = height - i - 1;
-    numberAsterisks = i * 2 + 1;
-    branches +=
-      "_".repeat(numberSpaces) +
-      "*".repeat(numberAsterisks) +
-      "_".repeat(numberSpaces) +
-      "\n";
+    for (let j = 0; j < height - i - 1; j++) {
+      response += "_";
+    }
+
+    for (let j = 0; j < i * 2 + 1; j++) {
+      response += "*";
+    }
+
+    for (let j = 0; j < height - i - 1; j++) {
+      response += "_";
+    }
+
+    response += "\n";
   }
 
-  let stalk = "";
-  stalk += "_".repeat(height - 1) + "#" + "_".repeat(height - 1) + "\n";
-  stalk += "_".repeat(height - 1) + "#" + "_".repeat(height - 1);
+  for (let i = 0; i < 2; i++) {
+    for (let j = 0; j < height - 1; j++) {
+      response += "_";
+    }
 
-  tree += branches + stalk;
+    response += "#";
 
-  return tree;
+    for (let j = 0; j < height - 1; j++) {
+      response += "_";
+    }
+
+    if (i === 0) {
+      response += "\n";
+    }
+  }
+
+  return response;
 }
 
-console.log(createXmasTree(0));
+console.log(createXmasTree(5));
