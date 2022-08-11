@@ -28,10 +28,17 @@ maxProfit(pricesDoge); // -> -1 (no hay ganancia posible)
 const pricesAda = [3, 3, 3, 3, 3];
 maxProfit(pricesAda); // -> -1 (no hay ganancia posible)
 
-console.table(pricesBtc);
-console.log(pricesBtc);
-
 function maxProfit(prices) {
   // ¡Y no olvides compartir tu solución en redes!
-  return false;
+  let arrayClone = [...prices];
+  arrayClone.splice(0, 1);
+
+  let max = Math.max.apply(null, arrayClone);
+  prices.splice(arrayClone.indexOf(max) + 1);
+
+  let min = Math.min.apply(null, prices);
+  let result = max - min;
+
+  if (result < 1) return -1;
+  return result;
 }
